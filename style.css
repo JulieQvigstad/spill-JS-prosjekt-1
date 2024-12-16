@@ -44,3 +44,22 @@ h1 {
 a {
     text-decoration: none;
 }
+
+.container > div {
+    background-color: aliceblue;
+    font-size: 20px;
+    border: 1px solid black;
+}
+.container {
+    display:grid;
+    justify-content: center;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    text-align: center;
+    padding: 30px;
+    padding-bottom: 70px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 30px;
+}
+
