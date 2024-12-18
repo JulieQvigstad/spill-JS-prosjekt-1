@@ -8,22 +8,30 @@
 </head>
 <body>
 
-    <header>Back to frontpage</header>
-
-    <div class="container">
-            
-        <div>Boks 1</div>
-        <div>Boks 2</div>
-        <div>Boks 3</div>
-        <div>Boks 4</div>
-        <div>Boks 5</div>
-        <div>Boks 6</div>
-        <div>Boks 7</div>
-        <div>Boks 8</div>
-        <div>Boks 9</div>
-        
+   
+        <div class="container"> 
+            <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell">Boks 1</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="1" class="cell">Boks 2</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="3" class="cell">Boks 4</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="2" class="cell">Boks 3</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="4" class="cell">Boks 5</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="5" class="cell">Boks 6</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="6" class="cell">Boks 7</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="7" class="cell">Boks 8</div>
+            <div onclick="handleCellClick(this, 0)" data-cell-index="8" class="cell">Boks 9</div>
     
-    </div>
+
+            <h2 class="winning-message"></h2>
+            <button class="game-restart">Restart Game</button>
+        </div>
+    
+        <script>
+            function handleCellClick(clickedCell, clickedCellIndex) {
+                console.log("Nå ble et element klikket:", clickedCell)
+                console.log(" og tallet til elementet er:", clickedCellIndex)
+
+            }
+        </script>
     
 </body>
 </html>
