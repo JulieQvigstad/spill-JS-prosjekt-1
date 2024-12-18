@@ -9,7 +9,7 @@
 <body>
 
    
-        <div class="container"> 
+        <div class="container" id="game-board"> 
             <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell">Boks 1</div>
             <div onclick="handleCellClick(this, 0)" data-cell-index="1" class="cell">Boks 2</div>
             <div onclick="handleCellClick(this, 0)" data-cell-index="3" class="cell">Boks 4</div>
@@ -21,11 +21,32 @@
             <div onclick="handleCellClick(this, 0)" data-cell-index="8" class="cell">Boks 9</div>
     
 
-            <h2 class="winning-message"></h2>
-            <button class="game-restart">Restart Game</button>
+            <h2 id="winning-message"></h2>
+            <p id="winning-message-text"></p>
+            <button id="game-restart">Restart Game</button>
         </div>
     
         <script>
+            const messageElement = document.getElementById("winning-message");
+            const boardElement = document.getElementById("game-board");
+            const WinningMessageElement = document.getElementById("winning-message");
+            const WinningMessageTextElement = document.getElementById("winning-message-text")
+            const RestartButtonElement = document.getElementById("game-restart")
+
+            let isCircleTurn = false; //holder styr på hvem sin tur det er, false = x xin tur, true = O sin tur 
+
+            const WINNING_COMBINATIONS = [ //alle kombinasjonene som kan gi seier 
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6],
+            ];
+
+
             function handleCellClick(clickedCell, clickedCellIndex) {
                 console.log("Nå ble et element klikket:", clickedCell)
                 console.log(" og tallet til elementet er:", clickedCellIndex)
