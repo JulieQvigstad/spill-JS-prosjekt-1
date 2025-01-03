@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spill</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-   
-        <div class="container" id="game-board"> 
+
+    <div class="container" id="game-board">
+        
+        <div class="gridContainer">
             <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell">Boks 1</div>
             <div onclick="handleCellClick(this, 0)" data-cell-index="1" class="cell">Boks 2</div>
             <div onclick="handleCellClick(this, 0)" data-cell-index="3" class="cell">Boks 4</div>
@@ -19,64 +23,68 @@
             <div onclick="handleCellClick(this, 0)" data-cell-index="6" class="cell">Boks 7</div>
             <div onclick="handleCellClick(this, 0)" data-cell-index="7" class="cell">Boks 8</div>
             <div onclick="handleCellClick(this, 0)" data-cell-index="8" class="cell">Boks 9</div>
-    
+        </div>
 
-            <h2 id="winning-message"></h2>
-            <p id="winning-message-text"></p>
+        <div class="nedreContainer">
+            <div class="infoContainer">
+                <h2 id="winning-message"></h2>
+                <p id="winning-message-text"></p>
+            </div>
             <button id="game-restart">Restart Game</button>
         </div>
-    
-        <script>
-            const messageElement = document.getElementById("winning-message");
-            const boardElement = document.getElementById("game-board");
-            const WinningMessageElement = document.getElementById("winning-message");
-            const WinningMessageTextElement = document.getElementById("winning-message-text")
-            const RestartButtonElement = document.getElementById("game-restart")
+    </div>
+    <script>
+        const messageElement = document.getElementById("winning-message");
+        const boardElement = document.getElementById("game-board");
+        const WinningMessageElement = document.getElementById("winning-message");
+        const WinningMessageTextElement = document.getElementById("winning-message-text")
+        const RestartButtonElement = document.getElementById("game-restart")
 
-            let currentPlayer = "X"; //starter med spiller X
-            let gameActive = true; //spillet er aktivt i starten (skjønner ikke helt )
+        let currentPlayer = "X"; //starter med spiller X
+        let gameActive = true; //spillet er aktivt i starten (skjønner ikke helt )
 
-            //funksjonen for et trekk
-            function handleCellClick(clickedCell, clickedCellIndex) {
-                console.log("Nå ble et element klikket:", clickedCell)
-                console.log(" og tallet til elementet er:", clickedCellIndex)
+        //funksjonen for et trekk
+        function handleCellClick(clickedCell, clickedCellIndex) {
+            console.log("Nå ble et element klikket:", clickedCell)
+            console.log(" og tallet til elementet er:", clickedCellIndex)
 
-            }
+        }
 
-            if (!gameActive || cell.classList.contains("taken")) {
-                return; //hvis cellen er tatt eller spillet er over, gjør ingenting 
-            }
+        if (!gameActive || cell.classList.contains("taken")) {
+            return; //hvis cellen er tatt eller spillet er over, gjør ingenting 
+        }
 
-            //Plasserer spillerens symbol
-            cell.textContent = currentPlayer;
-            cell.classList.add("taken");
+        //Plasserer spillerens symbol
+        cell.textContent = currentPlayer;
+        cell.classList.add("taken");
 
-            //Sjekker om noen vant
-            if (checkWin()) {
-                winnerMessage.textContent = ${currentPlayer} vant!;
-                gameActive = false; //Stopper spillet 
-            } else if (isDraw()) {
-                winnerMessage.textContent = "Uavgjort!";
-                gameActive = false;  //stopper spillet 
-            } else {
-                //bytter spiller 
-                currentPlayer currentPlayer === "X" ? "O" : "X";
-            }
-
-
-            const WINNING_COMBINATIONS = [ //alle kombinasjonene som kan gi seier 
-                [0, 1, 2],
-                [3, 4, 5],
-                [6, 7, 8],
-                [0, 3, 6],
-                [1, 4, 7],
-                [2, 5, 8],
-                [0, 4, 8],
-                [2, 4, 6],
-            ];
+        //Sjekker om noen vant
+        if (checkWin()) {
+            winnerMessage.textContent = ${ currentPlayer } vant!;
+            gameActive = false; //Stopper spillet 
+        } else if (isDraw()) {
+            winnerMessage.textContent = "Uavgjort!";
+            gameActive = false;  //stopper spillet 
+        } else {
+            //bytter spiller 
+            currentPlayer === "X" ? "O" : "X";
+        }
 
 
-        </script>
-    
+        const WINNING_COMBINATIONS = [ //alle kombinasjonene som kan gi seier 
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+
+
+    </script>
+
 </body>
+
 </html>
