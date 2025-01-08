@@ -62,6 +62,7 @@ a {
     border: 2px solid black;
     border-radius: 10px;
     margin: 20px;
+    padding-bottom: 10px;
 }
 
 .gridContainer{
@@ -78,6 +79,9 @@ a {
 .gridContainer > div {
     border: 2px solid black;
     background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nedreContainer{
