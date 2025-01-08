@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Rubik Vinyl", serif;
 }
 
 body {
@@ -82,6 +83,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 70px;
+    font-weight: bold;
+    color: hotpink;
+    
 }
 
 .nedreContainer{
