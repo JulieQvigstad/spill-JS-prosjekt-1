@@ -30,7 +30,7 @@
                 <h2 id="winning-message"></h2>
                 <p id="winning-message-text"></p>
             </div>
-            <button id="game-restart">Restart Game</button>
+            <button onclick="restartGame()" id="game-restart">Restart Game</button>
         </div>
     </div>
     <script>
@@ -91,6 +91,11 @@
         function isDraw() {
             return false
         }
+
+        function restartGame() {
+            location.reload(); // Laster inn siden på nytt
+        }
+
 
 
     </script>
