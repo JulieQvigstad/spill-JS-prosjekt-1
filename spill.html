@@ -13,30 +13,38 @@
 
 <body>
 
-
-    <div class="container" id="game-board">
-
-        <div class="gridContainer">
-            <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell"></div>
-            <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell"></div>
-            <div onclick="handleCellClick(this, 2)" data-cell-index="3" class="cell"></div>
-            <div onclick="handleCellClick(this, 3)" data-cell-index="2" class="cell"></div>
-            <div onclick="handleCellClick(this, 4)" data-cell-index="4" class="cell"></div>
-            <div onclick="handleCellClick(this, 5)" data-cell-index="5" class="cell"></div>
-            <div onclick="handleCellClick(this, 6)" data-cell-index="6" class="cell"></div>
-            <div onclick="handleCellClick(this, 7)" data-cell-index="7" class="cell"></div>
-            <div onclick="handleCellClick(this, 8)" data-cell-index="8" class="cell"></div>
-        </div>
-
-        <div class="nedreContainer">
-            <div class="infoContainer">
-                <h2 id="winning-message"></h2>
-                <p id="winning-message-text"></p>
+    <section>
+        <a href="index.html">
+         <aside>
+            <h2>Home</h2>
+         </aside> 
+        </a>
+        
+        <div class="container" id="game-board">
+            
+            <div class="gridContainer">
+                <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell"></div>
+                <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell"></div>
+                <div onclick="handleCellClick(this, 2)" data-cell-index="3" class="cell"></div>
+                <div onclick="handleCellClick(this, 3)" data-cell-index="2" class="cell"></div>
+                <div onclick="handleCellClick(this, 4)" data-cell-index="4" class="cell"></div>
+                <div onclick="handleCellClick(this, 5)" data-cell-index="5" class="cell"></div>
+                <div onclick="handleCellClick(this, 6)" data-cell-index="6" class="cell"></div>
+                <div onclick="handleCellClick(this, 7)" data-cell-index="7" class="cell"></div>
+                <div onclick="handleCellClick(this, 8)" data-cell-index="8" class="cell"></div>
             </div>
-            <button onclick="restartGame()" id="game-restart">Restart Game</button>
+            
+            <div class="nedreContainer">
+                <div class="infoContainer">
+                    <h2 id="winning-message"></h2>
+                    <p id="winning-message-text"></p>
+                </div>
+                <button onclick="restartGame()" id="game-restart">Restart Game</button>
+            </div>
         </div>
-    </div>
-    <script>
+    </section>
+    
+        <script>
         const messageElement = document.getElementById("winning-message");
         const boardElement = document.getElementById("game-board");
         const WinningMessageElement = document.getElementById("winning-message");
