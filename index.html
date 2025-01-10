@@ -13,30 +13,10 @@
     
     <div id="forside">
         <h1>Tic-Tac-Toe</h1>
-        <a href="spill.html"><div id="start" class="sound">
+        <a href="spill.html"><div id="start">
             <p>Start Game</p>
         </div></a>
      </div>
-
-     <audio id="sound-effect" src="soundEffect.mp3"></audio>
-
-     <script>
-        const soundElement = document.querySelector(".sound"); // Henter elementet med klassen "sound"
-        const soundEffect = document.getElementById("sound-effect"); // Henter lyd-elementet
-
-
-        // Legger til klikk-hendelse på "sound"-elementet
-        soundElement.addEventListener("click", () => {
-            soundEffect.currentTime = 0; // Starter lyden fra begynnelsen
-            soundEffect.play().catch(error => {
-                console.error("Kunne ikke spille lyd:", error);
-            });
-        });
-    </script>
-
-
-
-     </script>
 
 </body>
 </html>

@@ -24,6 +24,10 @@
 
         <div class="container" id="game-board">
 
+            <div class="infoContainer">
+                <h2 id="winning-message"></h2>
+            </div>
+
             <div class="gridContainer" id="button">
                 <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell button"></div>
                 <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell button"></div>
@@ -37,9 +41,6 @@
             </div>
 
             <div class="nedreContainer">
-                <div class="infoContainer">
-                    <h2 id="winning-message"></h2>
-                </div>
                 <button onclick="restartGame()" id="game-restart">Restart Game</button>
             </div>
         </div>
@@ -47,6 +48,8 @@
 
     <audio id="click-sound" src="clickSound.mp3"></audio>
     <audio id="win-sound" src="vinner.mp3"></audio>
+    <audio id="win-sound" src="taper.mp3"></audio>
+
 
     <script>
         const messageElement = document.getElementById("winning-message");
@@ -57,6 +60,7 @@
         const buttons = document.querySelectorAll(".button");
         const clickSound = document.getElementById("click-sound");
         const winSound = document.getElementById("win-sound");
+        const looseSound = document.getElementById("win-sound")
         
         
         const lydSpiller = new Audio("clickSound.mp3")
@@ -102,6 +106,7 @@
                 gameActive = false; //Stopper spillet 
             } else if (isDraw()) {
                 winnerMessage.textContent = "Uavgjort!";
+                looseSound.play();
                 gameActive = false;  //stopper spillet 
             } else {
                 //bytter spiller 
