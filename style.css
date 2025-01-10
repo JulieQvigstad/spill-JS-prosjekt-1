@@ -9,12 +9,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(bilder/galakse.jpg);
+    background-image: url(bilder/galaxy.jpg);
     background-size: cover;
 }
 
 .forside {
-    background-image: url(bilder/bakgrunn.avif);
+    background-image: url(bilder/stars.jpg);
     background-size: cover;
 }
 
@@ -110,7 +110,7 @@ aside:hover {
     justify-content: center;
     font-size: 110px;
     font-weight: bold;
-    color: hotpink;
+    color: blueviolet;
     
 }
 

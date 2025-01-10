@@ -15,23 +15,23 @@
 
     <section>
         <a href="index.html">
-         <aside>
+         <aside class="sound">
             <h2>Home</h2>
          </aside> 
         </a>
         
         <div class="container" id="game-board">
             
-            <div class="gridContainer">
-                <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell"></div>
-                <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell"></div>
-                <div onclick="handleCellClick(this, 2)" data-cell-index="3" class="cell"></div>
-                <div onclick="handleCellClick(this, 3)" data-cell-index="2" class="cell"></div>
-                <div onclick="handleCellClick(this, 4)" data-cell-index="4" class="cell"></div>
-                <div onclick="handleCellClick(this, 5)" data-cell-index="5" class="cell"></div>
-                <div onclick="handleCellClick(this, 6)" data-cell-index="6" class="cell"></div>
-                <div onclick="handleCellClick(this, 7)" data-cell-index="7" class="cell"></div>
-                <div onclick="handleCellClick(this, 8)" data-cell-index="8" class="cell"></div>
+            <div class="gridContainer" id="button">
+                <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell button"></div>
+                <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell button"></div>
+                <div onclick="handleCellClick(this, 2)" data-cell-index="3" class="cell button"></div>
+                <div onclick="handleCellClick(this, 3)" data-cell-index="2" class="cell button"></div>
+                <div onclick="handleCellClick(this, 4)" data-cell-index="4" class="cell button"></div>
+                <div onclick="handleCellClick(this, 5)" data-cell-index="5" class="cell button"></div>
+                <div onclick="handleCellClick(this, 6)" data-cell-index="6" class="cell button"></div>
+                <div onclick="handleCellClick(this, 7)" data-cell-index="7" class="cell button"></div>
+                <div onclick="handleCellClick(this, 8)" data-cell-index="8" class="cell button"></div>
             </div>
             
             <div class="nedreContainer">
@@ -39,10 +39,13 @@
                     <h2 id="winning-message"></h2>
                     <p id="winning-message-text"></p>
                 </div>
-                <button onclick="restartGame()" id="game-restart">Restart Game</button>
+                    <button onclick="restartGame()" id="game-restart" class="sound">Restart Game</button>
             </div>
         </div>
     </section>
+
+    <audio id="click-sound" src="clickSound.mp3"></audio>
+    <audio id="sound-effect" src="soundEffect.mp3"></audio>
     
         <script>
         const messageElement = document.getElementById("winning-message");
@@ -50,7 +53,16 @@
         const WinningMessageElement = document.getElementById("winning-message");
         const WinningMessageTextElement = document.getElementById("winning-message-text")
         const RestartButtonElement = document.getElementById("game-restart")
+        
+        const buttons = document.querySelectorAll(".button");
+        const clickSound = document.getElementById("click-sound");
+        const sounds = document.querySelectorAll(".sound");
+        const soundEffect = document.getElementById("sound-effect");
 
+        const lydSpiller = new Audio("clickSound.mp3")
+        const lydKnapper = new Audio("soundEffect.mp3")
+
+       
         let currentPlayer = "X"; //starter med spiller X
         let gameActive = true; //spillet er aktivt i starten (skjønner ikke helt )
 
@@ -72,10 +84,7 @@
             console.log("Nå ble et element klikket:", clickedCell)
             console.log(" og tallet til elementet er:", clickedCellIndex)
 
-            if (!gameActive || clickedCell.classList.contains("taken")) {
-                return; //hvis cellen er tatt eller spillet er over, gjør ingenting 
-            }
-
+            if (!gameActive || clickedCell.classList.contains("taken")) return; //hvis cellen er tatt eller spillet er over, gjør ingenting 
 
             //Plasserer spillerens symbol
             clickedCell.textContent = currentPlayer;
@@ -107,7 +116,17 @@
             location.reload(); // Laster inn siden på nytt
         }
 
+            buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            clickSound.play();
+        });
+    });
 
+    sounds.forEach(soundElement => {
+        soundElement.addEventListener("click", () => {
+            soundEffect.play();
+        });
+    });
 
     </script>
 
