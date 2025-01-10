@@ -7,21 +7,23 @@
     <title>Spill</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+AU+SA+Guides&family=Rubik+Vinyl&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+AU+SA+Guides&family=Rubik+Vinyl&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
     <section>
         <a href="index.html">
-         <aside class="sound">
-            <h2>Home</h2>
-         </aside> 
+            <aside>
+                <h2>Home</h2>
+            </aside>
         </a>
-        
+
         <div class="container" id="game-board">
-            
+
             <div class="gridContainer" id="button">
                 <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell button"></div>
                 <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell button"></div>
@@ -33,36 +35,34 @@
                 <div onclick="handleCellClick(this, 7)" data-cell-index="7" class="cell button"></div>
                 <div onclick="handleCellClick(this, 8)" data-cell-index="8" class="cell button"></div>
             </div>
-            
+
             <div class="nedreContainer">
                 <div class="infoContainer">
                     <h2 id="winning-message"></h2>
                     <p id="winning-message-text"></p>
                 </div>
-                    <button onclick="restartGame()" id="game-restart" class="sound">Restart Game</button>
+                <button onclick="restartGame()" id="game-restart">Restart Game</button>
             </div>
         </div>
     </section>
 
     <audio id="click-sound" src="clickSound.mp3"></audio>
     <audio id="sound-effect" src="soundEffect.mp3"></audio>
-    
-        <script>
+
+    <script>
         const messageElement = document.getElementById("winning-message");
         const boardElement = document.getElementById("game-board");
         const WinningMessageElement = document.getElementById("winning-message");
         const WinningMessageTextElement = document.getElementById("winning-message-text")
         const RestartButtonElement = document.getElementById("game-restart")
-        
+
         const buttons = document.querySelectorAll(".button");
         const clickSound = document.getElementById("click-sound");
-        const sounds = document.querySelectorAll(".sound");
-        const soundEffect = document.getElementById("sound-effect");
-
+        
         const lydSpiller = new Audio("clickSound.mp3")
-        const lydKnapper = new Audio("soundEffect.mp3")
+        
 
-       
+
         let currentPlayer = "X"; //starter med spiller X
         let gameActive = true; //spillet er aktivt i starten (skjønner ikke helt )
 
@@ -113,20 +113,15 @@
         }
 
         function restartGame() {
-            location.reload(); // Laster inn siden på nytt
+          location.reload(); // Laster inn siden på nytt
         }
 
-            buttons.forEach(button => {
-        button.addEventListener("click", () => {
-            clickSound.play();
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                clickSound.play();
+            });
         });
-    });
 
-    sounds.forEach(soundElement => {
-        soundElement.addEventListener("click", () => {
-            soundEffect.play();
-        });
-    });
 
     </script>
 
