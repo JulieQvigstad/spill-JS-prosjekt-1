@@ -27,8 +27,8 @@
             <div class="gridContainer" id="button">
                 <div onclick="handleCellClick(this, 0)" data-cell-index="0" class="cell button"></div>
                 <div onclick="handleCellClick(this, 1)" data-cell-index="1" class="cell button"></div>
-                <div onclick="handleCellClick(this, 2)" data-cell-index="3" class="cell button"></div>
-                <div onclick="handleCellClick(this, 3)" data-cell-index="2" class="cell button"></div>
+                <div onclick="handleCellClick(this, 2)" data-cell-index="2" class="cell button"></div>
+                <div onclick="handleCellClick(this, 3)" data-cell-index="3" class="cell button"></div>
                 <div onclick="handleCellClick(this, 4)" data-cell-index="4" class="cell button"></div>
                 <div onclick="handleCellClick(this, 5)" data-cell-index="5" class="cell button"></div>
                 <div onclick="handleCellClick(this, 6)" data-cell-index="6" class="cell button"></div>
@@ -39,7 +39,6 @@
             <div class="nedreContainer">
                 <div class="infoContainer">
                     <h2 id="winning-message"></h2>
-                    <p id="winning-message-text"></p>
                 </div>
                 <button onclick="restartGame()" id="game-restart">Restart Game</button>
             </div>
@@ -47,17 +46,18 @@
     </section>
 
     <audio id="click-sound" src="clickSound.mp3"></audio>
-    <audio id="sound-effect" src="soundEffect.mp3"></audio>
+    <audio id="win-sound" src="vinner.mp3"></audio>
 
     <script>
         const messageElement = document.getElementById("winning-message");
         const boardElement = document.getElementById("game-board");
-        const WinningMessageElement = document.getElementById("winning-message");
-        const WinningMessageTextElement = document.getElementById("winning-message-text")
+        const winnerMessage = document.getElementById("winning-message");
         const RestartButtonElement = document.getElementById("game-restart")
 
         const buttons = document.querySelectorAll(".button");
         const clickSound = document.getElementById("click-sound");
+        const winSound = document.getElementById("win-sound");
+        
         
         const lydSpiller = new Audio("clickSound.mp3")
         
@@ -78,21 +78,27 @@
             [2, 4, 6],
         ];
 
+        let brett = ["", "", "", "", "", "", "", "", ""]
+
 
         //funksjonen for et trekk
         function handleCellClick(clickedCell, clickedCellIndex) {
-            console.log("Nå ble et element klikket:", clickedCell)
-            console.log(" og tallet til elementet er:", clickedCellIndex)
+            // console.log("Nå ble et element klikket:", clickedCell)
+            // console.log(" og tallet til elementet er:", clickedCellIndex)
 
             if (!gameActive || clickedCell.classList.contains("taken")) return; //hvis cellen er tatt eller spillet er over, gjør ingenting 
 
             //Plasserer spillerens symbol
             clickedCell.textContent = currentPlayer;
             clickedCell.classList.add("taken");
+            brett[clickedCellIndex] =  currentPlayer
+            console.log("Brettet ser slik ut:", brett)
+
 
             //Sjekker om noen vant
-            if (checkWin()) {
-                winnerMessage.textContent = `${currentPlayer} vant!`;
+            if (sjekkVinner()) {
+                winnerMessage.textContent = `${currentPlayer} - vant!`;
+                winSound.play(); 
                 gameActive = false; //Stopper spillet 
             } else if (isDraw()) {
                 winnerMessage.textContent = "Uavgjort!";
@@ -104,12 +110,35 @@
 
         }
 
-        function checkWin() {
-            return false
-        }
+        //function checkWin() {
+            //return false
+       // }
 
-        function isDraw() {
-            return false
+        function sjekkVinner() {
+                // Sjekk vannrette linjer
+                if (brett[0] === brett[1] && brett[1] === brett[2] && brett[0] !== "") return true;
+                if (brett[3] === brett[4] && brett[4] === brett[5] && brett[3] !== "") return true;
+                if (brett[6] === brett[7] && brett[7] === brett[8] && brett[6] !== "") return true;
+ 
+                // Sjekk loddrette linjer
+                if (brett[0] === brett[3] && brett[3] === brett[6] && brett[0] !== "") return true;
+                if (brett[1] === brett[4] && brett[4] === brett[7] && brett[1] !== "") return true;
+                if (brett[2] === brett[5] && brett[5] === brett[8] && brett[2] !== "") return true;
+ 
+                // Sjekk diagonaler
+                if (brett[0] === brett[4] && brett[4] === brett[8] && brett[0] !== "") return true;
+                if (brett[2] === brett[4] && brett[4] === brett[6] && brett[2] !== "") return true;
+ 
+                return false;
+            }            
+
+        function isDraw() {  //sjekker om det er uavgjort 
+            for (let i = 0; i < 9; i++) {
+                if (brett[i] == "") {
+                    return false
+                }
+            }
+            return true
         }
 
         function restartGame() {
