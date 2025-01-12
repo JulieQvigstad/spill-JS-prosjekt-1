@@ -94,11 +94,11 @@ aside:hover {
 .gridContainer {
     display: grid;
     justify-content: center;
-    grid-template-columns: 175px 175px 175px;
-    grid-template-rows: 175px 175px 175px;
+    grid-template-columns: 170px 170px 170px;
+    grid-template-rows: 170px 170px 170px;
     text-align: center;
-    padding: 30px;
-    padding-bottom: 40px;
+    padding: 25px;
+    padding-bottom: 20px;
     border-radius: 10px;
     gap: 20px;
 }
