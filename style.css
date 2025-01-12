@@ -29,7 +29,7 @@ body {
     align-items: center;
     justify-content: space-evenly;
     margin-top: 30px;
-    background-color: rgba(0.5, 0.5, 0.5,0.5);
+    background-color: rgba(0.5, 0.5, 0.5, 0.5);
 }
 
 h1 {
@@ -88,11 +88,11 @@ aside:hover {
     border-radius: 10px;
     margin: 20px;
     padding-bottom: 10px;
-    background-color: rgba(0.5, 0.5, 0.5,0.5);
+    background-color: rgba(0.5, 0.5, 0.5, 0.5);
 }
 
-.gridContainer{
-    display:grid;
+.gridContainer {
+    display: grid;
     justify-content: center;
     grid-template-columns: 175px 175px 175px;
     grid-template-rows: 175px 175px 175px;
@@ -102,7 +102,8 @@ aside:hover {
     border-radius: 10px;
     gap: 20px;
 }
-.gridContainer > div {
+
+.gridContainer>div {
     border: 2px solid black;
     background-color: aliceblue;
     display: flex;
@@ -111,10 +112,10 @@ aside:hover {
     font-size: 150px;
     font-weight: bold;
     color: blueviolet;
-    
+
 }
 
-.nedreContainer{
+.nedreContainer {
     grid-column: 1/4;
     display: flex;
     flex-direction: column;
@@ -124,7 +125,7 @@ aside:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-   
+
 }
 
 #winning-message {
@@ -140,7 +141,7 @@ button {
     border: 2px solid white;
     border-radius: 5px;
     background-color: pink;
-    font-size: 25px;    
+    font-size: 25px;
 }
 
 button:hover {
@@ -152,6 +153,3 @@ button:hover {
 .omstart {
     display: flex;
 }
-
-
-
